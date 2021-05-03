@@ -1,15 +1,16 @@
 import { User } from "../../entities/User";
 import { ICreateUserRequestDTO } from "../../useCases/CreateUser/CreateUserDTO";
 import { IUserRepository } from "../IUserRepository";
+import { config } from "dotenv";
+config()
+const MongoClient = require('mongodb').MongoClient;
 
-const { MongoClient } = require('mongodb');
-const uri = "";
-const client = new MongoClient(uri);
+const uri = process.env.MONGO_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 class UserRepository implements IUserRepository {
   constructor(
     private client,
-    private database
   ) {}
 
   async findByEmail(id: string) {
@@ -18,7 +19,7 @@ class UserRepository implements IUserRepository {
       await client.connect();
 
       const database = client.db('tyt');
-      const users = database.collection('users');
+      const users = database.collection('UserAuth');
 
       const query = { id: id };
       db_user = await users.findOne(query);
@@ -35,12 +36,17 @@ class UserRepository implements IUserRepository {
   }
 
   async save(new_user: User) {
-    await client.connect();
+    try {
+      await client.connect();
+    } catch (err) {
+      throw new Error(err.message);
+    }
 
     const database = client.db('tyt');
-    const users = database.collection('users');
+    const users = database.collection('UserAuth');
 
     users.insertOne(new_user);
   }
 }
 
+export { UserRepository }
