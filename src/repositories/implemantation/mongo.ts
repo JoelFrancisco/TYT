@@ -14,26 +14,33 @@ class UserRepository implements IUserRepository {
     private client,
   ) {}
 
-  async findByEmail(id: string) {
+  async findByEmail(email: string) {
     let db_user;
     try { 
       await this.client.connect();
 
-      const database = this.client.db('tyt');
+      const database = this.client.db('Main');
       const users = database.collection('UserAuth');
 
-      const query = { id: id };
+      const query = { email: email };
       db_user = await users.findOne(query);
-    } finally {
-      await client.close();
-      const data: ICreateUserRequestDTO = { 
-        name: db_user[0].name,
-        email: db_user[0].email,
-        password: db_user[0].password
-      };
-      const user = new User(data, db_user[0].id);
-      return user;
-    } 
+      console.log(db_user);
+      if (db_user) {
+        await client.close();
+        const { name, email, password } = db_user
+        const data: ICreateUserRequestDTO = { 
+          name: name, 
+          email: email,
+          password: password
+        };
+        const user = new User(data);
+        return user;
+      } else {
+        return false
+      }
+    } catch (err) {
+      throw new Error(err.message);
+    }
   }
 
   async save(new_user: User) {
