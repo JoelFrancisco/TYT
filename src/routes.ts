@@ -8,7 +8,7 @@ router.get('/', (request, response) => {
 })
 
 router.post('/users', async (request, response) => {
-    await userController.handle(request, response);
+    return await userController.handle(request, response);
 })
 
 export { router }
