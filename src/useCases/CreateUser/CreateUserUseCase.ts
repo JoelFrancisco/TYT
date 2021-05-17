@@ -1,12 +1,14 @@
 import { User } from "../../entities/User";
 import { IMailProvider } from "../../providers/IMailProvider";
 import { IUserRepository } from "../../repositories/IUserRepository";
-import { ICreateUserRequestDTO } from "./CreateUserDTO";
+import { IHashPassword } from "../../services/Hash/IHashPassword";
+import { ICreateUserRequestDTO } from "./ICreateUserDTO";
 
 export class CreateUserUseCase {
     constructor(
         private userRepository: IUserRepository,
         // private mailProvider: IMailProvider,
+        private hashPassword: IHashPassword
     ) {}
 
     async execute(data: ICreateUserRequestDTO) {
@@ -15,8 +17,14 @@ export class CreateUserUseCase {
         if (userAlreadyExists) {
             throw new Error('User already exists.');
         }
-
-        const user = new User(data);
+        
+        const hashedPassword = await this.hashPassword.hash(data.password);
+        const { name, email } = data;
+        const user = new User({
+            name: name,
+            email: email,
+            password: hashedPassword
+        });
 
         await this.userRepository.save(user);
 

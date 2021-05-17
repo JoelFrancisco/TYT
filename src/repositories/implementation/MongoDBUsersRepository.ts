@@ -1,5 +1,5 @@
 import { User } from "../../entities/User";
-import { ICreateUserRequestDTO } from "../../useCases/CreateUser/CreateUserDTO";
+import { ICreateUserRequestDTO } from "../../useCases/CreateUser/ICreateUserDTO";
 import { IUserRepository } from "../IUserRepository";
 import { config } from "dotenv";
 import { MongoClient } from "mongodb";
@@ -15,7 +15,6 @@ class UserRepository implements IUserRepository {
   ) {}
 
   async findByEmail(email: string) {
-    let db_user;
     try { 
       await this.client.connect();
 
@@ -23,17 +22,16 @@ class UserRepository implements IUserRepository {
       const users = database.collection('UserAuth');
 
       const query = { email: email };
-      db_user = await users.findOne(query);
+      const db_user = await users.findOne(query);
       console.log(db_user);
       if (db_user) {
         await client.close();
         const { name, email, password } = db_user
-        const data: ICreateUserRequestDTO = { 
+        const user = new User({ 
           name: name, 
-          email: email,
+          email: email, 
           password: password
-        };
-        const user = new User(data);
+        });
         return user;
       } else {
         return false
