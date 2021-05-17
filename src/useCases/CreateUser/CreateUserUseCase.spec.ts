@@ -12,8 +12,8 @@ describe('Register', () => {
     const response = await request(app)
       .post('/users')
       .send({
-        name: "teste1",
-        email: `teste${randomNumber}@gmail.com`,
+        name: "teste2",
+        email: `test${randomNumber}@gmail.com`,
         password: "teste"
       });
 

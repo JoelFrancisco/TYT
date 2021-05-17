@@ -1,13 +1,5 @@
 import { User } from "../../entities/User";
 import { IUserRepository } from "../IUserRepository";
-import { config } from "dotenv";
-import { MongoClient } from "mongodb";
-
-config()
-
-const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
 class UserRepository implements IUserRepository {
   constructor(
     private client,
@@ -24,7 +16,7 @@ class UserRepository implements IUserRepository {
       const db_user = await users.findOne(query);
       console.log(db_user);
       if (db_user) {
-        await client.close();
+        await this.client.close();
         const { name, email, password } = db_user
         const user = new User({ 
           name: name, 
@@ -48,6 +40,7 @@ class UserRepository implements IUserRepository {
       const users = database.collection('UserAuth');
 
       users.insertOne(new_user);
+      await this.client.close();
     } catch (err) {
       throw new Error(err.message);
     } 

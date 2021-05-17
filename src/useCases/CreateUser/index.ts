@@ -3,6 +3,9 @@ import { CreateUserController } from './CreateUserController'
 import { CreateUserUseCase } from './CreateUserUseCase'
 import { UserRepository } from '../../repositories/implementation/MongoDBUsersRepository'
 import { BcryptHashPassword } from "../../services/Hash/implementation/BcryptHashPassword";
+import { config } from 'dotenv';
+
+config()
 
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, {
