@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { User } from '../../entities/User';
+import { User } from '../../entities/User/User';
 import { IUserRepository } from '../IUserRepository';
 
 class UserRepository implements IUserRepository {

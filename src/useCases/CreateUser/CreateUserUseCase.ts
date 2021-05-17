@@ -1,5 +1,5 @@
-import { User } from '../../entities/User';
-import { IMailProvider } from '../../providers/IMailProvider';
+import { User } from '../../entities/User/User';
+//import { IMailProvider } from '../../providers/IMailProvider';
 import { IUserRepository } from '../../repositories/IUserRepository';
 import { IHashPassword } from '../../services/Hash/IHashPassword';
 import { ICreateUserRequestDTO } from './ICreateUserDTO';
