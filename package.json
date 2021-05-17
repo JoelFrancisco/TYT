@@ -1,10 +1,10 @@
 {
-  "name": "express-api",
+  "name": "tyt",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npx tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
+    "start": "yarn tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

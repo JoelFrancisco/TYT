@@ -1,5 +1,4 @@
 import { User } from "../../entities/User";
-import { ICreateUserRequestDTO } from "../../useCases/CreateUser/ICreateUserDTO";
 import { IUserRepository } from "../IUserRepository";
 import { config } from "dotenv";
 import { MongoClient } from "mongodb";
