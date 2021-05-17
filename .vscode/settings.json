@@ -1,33 +1,52 @@
 {
-    "cSpell.words": [
-        "Topology",
-        "Unified",
-        "respawn",
-        "tsnd",
-        "uuidv"
-    ],
-    "material-icon-theme.folders.associations": {
-        "infra": "app",
-        "entities": "class",
-        "domain": "class",
-        "schemas": "class",
-        "typeorm": "database",
-        "repositories": "mappings",
-        "http": "container",
-        "migrations": "tools",
-        "modules": "components",
-        "implementations": "core",
-        "dtos": "typescript",
-        "fakes": "mock",
-        "websockets": "pipe",
-        "protos": "pipe",
-        "grpc": "pipe",
-        "providers": "include",
-        "subscribers": "messages",
-        "useCases": "controller",
-        "kafka": "scripts",
-        "mappers": "meta",
-        "_shared": "shared",
-        "eslint-config": "tools"
-    }
+  "cSpell.words": [
+    "Topology",
+    "Unified",
+    "respawn",
+    "tsnd",
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
+  },
+  "material-icon-theme.folders.associations": {
+    "infra": "app",
+    "entities": "class",
+    "domain": "class",
+    "schemas": "class",
+    "typeorm": "database",
+    "repositories": "mappings",
+    "http": "container",
+    "migrations": "tools",
+    "modules": "components",
+    "implementations": "core",
+    "dtos": "typescript",
+    "fakes": "mock",
+    "websockets": "pipe",
+    "protos": "pipe",
+    "grpc": "pipe",
+    "providers": "include",
+    "subscribers": "messages",
+    "useCases": "controller",
+    "kafka": "scripts",
+    "mappers": "meta",
+    "_shared": "shared",
+    "eslint-config": "tools"
+  },
+  "[json]": {
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[typecript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[javascript]": {
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
 }

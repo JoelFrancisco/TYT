@@ -1,6 +1,6 @@
-import { User } from "../entities/User";
+import { User } from '../entities/User';
 
 export interface IUserRepository {
-    findByEmail(email: string): Promise<User | Boolean>;
-    save(user: User): Promise<void>;
+  findByEmail(email: string): Promise<User | boolean>;
+  save(user: User): Promise<void>;
 }
