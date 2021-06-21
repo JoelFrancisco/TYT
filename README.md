@@ -6,10 +6,10 @@
 <br>
 
 # SUMARIO
-- [SOBRE O PROJETO]()
-- [O PROBLEMA]()
-- [SOLUÇÃO]()
-- [TECNOLOGIA UTILIZADA]()
+- [SOBRE O PROJETO]('https://github.com/JoelFrancisco/TYT#sobre-o-projeto')
+- [O PROBLEMA]('https://github.com/JoelFrancisco/TYT#o-problema')
+- [SOLUÇÃO]('https://github.com/JoelFrancisco/TYT#solu%C3%A7%C3%A3o')
+- [TECNOLOGIA UTILIZADA]('https://github.com/JoelFrancisco/TYT#tecnologias-utilizadas')
 
 <br>
 <br>
